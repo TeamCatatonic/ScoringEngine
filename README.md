@@ -1,2 +1,3 @@
 # RefactoredWaffle
-Great repository name suggestion Github
+Temporary name
+An open source scoring engine for CyberPatriot practice images
