@@ -1,1 +1,7 @@
 c:\users\aaron\documents\visual studio 2015\Projects\ScoringEngine\ScoringEngine\bin\Debug\ScoringEngine.exe.config
+C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\bin\Debug\ScoringEngine.exe.config
+C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\bin\Debug\ScoringEngine.exe
+C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\bin\Debug\ScoringEngine.pdb
+C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.csprojResolveAssemblyReference.cache
+C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.exe
+C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.pdb

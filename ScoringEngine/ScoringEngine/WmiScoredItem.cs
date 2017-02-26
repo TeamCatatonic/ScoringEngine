@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScoringEngine
 {
-    class Program
+    public class WmiScoredItem : ScoredItem
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
