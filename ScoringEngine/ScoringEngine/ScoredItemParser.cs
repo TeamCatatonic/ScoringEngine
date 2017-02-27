@@ -35,19 +35,26 @@ namespace ScoringEngine
             {
                 if (item.CheckScored())
                 {
-                    if (item.IsPenalty) scoredPenalties.Add(item);
-                    else scoredVulns.Add(item);
-                    totalScore += item.Points;
+                    if (item.IsPenalty)
+                    {
+                        scoredPenalties.Add(item);
+                        totalScore -= item.Points;
+                    }
+                    else
+                    {
+                        scoredVulns.Add(item);
+                        totalScore += item.Points;
+                    }
                 }
-                maxScore += item.Points;
+                if (!item.IsPenalty) maxScore += item.Points;
             }
             string templated = File.ReadAllText("ScoringTemplate.html");
             Dictionary<string, string> toReplace = new Dictionary<string, string>()
             {
                 { "SCORE_STRING", $"{totalScore}/{maxScore}" },
-                { "VULN_STRING", $"{scoredVulns.Count}/{items.Where(x => !x.IsPenalty).Count()}" },
+                { "VULN_STRING", $"{scoredVulns.Count}/{items.Where(x => !x.IsPenalty).Count()} ({scoredVulns.Sum(x => x.Points)} pts)" },
                 { "VULN_LIST", String.Join(Environment.NewLine, (from item in scoredVulns select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
-                { "PEN_STRING", $"{scoredPenalties.Count}/{items.Where(x => x.IsPenalty).Count()}" },
+                { "PEN_STRING", $"{scoredPenalties.Count} ({scoredPenalties.Sum(x => x.Points)} pts)" },
                 { "PEN_LIST", String.Join(Environment.NewLine, (from item in scoredPenalties select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
             };
             foreach (var item in toReplace)

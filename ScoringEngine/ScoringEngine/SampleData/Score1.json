@@ -1,7 +1,7 @@
 ﻿[
   {
     "description": "Hosts file exists",
-    "points": 50,
+    "points": 5,
     "type": "FileCheck",
     "isPenalty": false,
 
@@ -10,12 +10,32 @@
   },
   {
     "description": "Hosts file contains 'localhost'",
-    "points": 50,
+    "points": 5,
     "type": "FileContains",
     "isPenalty": false,
 
     "filePath": "C:\\Windows\\System32\\drivers\\etc\\hosts",
     "regexPattern": "localhost",
+    "shouldMatch": true
+  },
+  {
+    "description": "ScoringTemplate.html does not contain 'hack'",
+    "points": 5,
+    "type": "FileContains",
+    "isPenalty": false,
+
+    "filePath": "ScoringTemplate.html",
+    "regexPattern": "hack",
+    "shouldMatch": false
+  },
+  {
+    "description": "ScoringTemplate.html contains 'hack'",
+    "points": 5,
+    "type": "FileContains",
+    "isPenalty": true,
+
+    "filePath": "ScoringTemplate.html",
+    "regexPattern": "hack",
     "shouldMatch": true
   }
 ]
