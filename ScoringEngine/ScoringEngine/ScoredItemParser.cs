@@ -51,6 +51,7 @@ namespace ScoringEngine
             string templated = File.ReadAllText("ScoringTemplate.html");
             Dictionary<string, string> toReplace = new Dictionary<string, string>()
             {
+                { "TIME_STRING", DateTime.Now.ToString() },
                 { "SCORE_STRING", $"{totalScore}/{maxScore}" },
                 { "VULN_STRING", $"{scoredVulns.Count}/{items.Where(x => !x.IsPenalty).Count()} ({scoredVulns.Sum(x => x.Points)} pts)" },
                 { "VULN_LIST", String.Join(Environment.NewLine, (from item in scoredVulns select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
