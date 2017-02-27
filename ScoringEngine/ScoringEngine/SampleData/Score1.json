@@ -1,0 +1,21 @@
+﻿[
+  {
+    "name": "Hosts file exists",
+    "points": 50,
+    "type": "FileCheck",
+    "isPenalty": false,
+
+    "filePath": "C:\\Windows\\System32\\drivers\\etc\\host",
+    "shouldExist": true
+  },
+  {
+    "name": "Hosts file contains 'localhost'",
+    "points": 50,
+    "type": "FileContains",
+    "isPenalty": false,
+
+    "filePath": "C:\\Windows\\System32\\drivers\\etc\\host",
+    "pattern": "localhost",
+    "shouldMatch": true
+  }
+]

@@ -19,7 +19,7 @@ namespace ScoringEngine
             {
                 scoredItems.Add((ScoredItem)typeof(JsonConvert)
                     .GetMethod("DeserializeObject", System.Reflection.BindingFlags.Static)
-                    .MakeGenericMethod(Type.GetType(item["type"].ToString()))
+                    .MakeGenericMethod(Type.GetType(item["type"].ToString() + "ScoredItem"))
                     .Invoke(null, new[] { item }));
             }
             return scoredItems;
