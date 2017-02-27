@@ -17,7 +17,10 @@ namespace ScoringEngine
             List<ScoredItem> scoredItems = new List<ScoredItem>();
             foreach (var item in obj.AsJEnumerable())
             {
-                scoredItems.Add((ScoredItem)Type.GetType(item["type"].ToString()).GetConstructor(new[] { typeof(JObject) }).Invoke(new[] { item }));
+                scoredItems.Add((ScoredItem)typeof(JsonConvert)
+                    .GetMethod("DeserializeObject", System.Reflection.BindingFlags.Static)
+                    .MakeGenericMethod(Type.GetType(item["type"].ToString()))
+                    .Invoke(null, new[] { item }));
             }
             return scoredItems;
         }
@@ -32,7 +35,7 @@ namespace ScoringEngine
             {
                 if (item.CheckScored())
                 {
-                    if (item.Penalty) scoredPenalties.Add(item.Description);
+                    if (item.IsPenalty) scoredPenalties.Add(item.Description);
                     else scoredSuccessful.Add(item.Description);
                     totalScore += item.Points;
                 }

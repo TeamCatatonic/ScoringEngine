@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScoredItemParser.cs" />
-    <Compile Include="ScoredItems\CompoundScoredItem.cs" />
     <Compile Include="ScoredItems\FileCheckScoredItem.cs" />
     <Compile Include="ScoredItems\FileContainsScoredItem.cs" />
     <Compile Include="ScoredItems\FileScoredItem.cs" />
