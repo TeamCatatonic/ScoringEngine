@@ -5,3 +5,6 @@ C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\bin\De
 C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.csprojResolveAssemblyReference.cache
 C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.exe
 C:\Users\aaron\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.pdb
+C:\Users\JarenMendelsohn\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\bin\Debug\ScoringEngine.exe.config
+C:\Users\JarenMendelsohn\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.exe
+C:\Users\JarenMendelsohn\Documents\GitHub\ScoringEngine\ScoringEngine\ScoringEngine\obj\Debug\ScoringEngine.pdb

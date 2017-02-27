@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ScoringEngine
 {
-    public class FileScoredItem : ScoredItem
+    public abstract class FileScoredItem : ScoredItem
     {
+        public string FilePath { get; protected set; }
     }
 }

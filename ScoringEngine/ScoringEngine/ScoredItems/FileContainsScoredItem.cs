@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ScoringEngine
 {
-    public abstract class ScoredItem
+    public class FileContainsScoredItem : FileScoredItem
     {
-
+        public string RegexCheck { get; protected set; }
     }
 }
