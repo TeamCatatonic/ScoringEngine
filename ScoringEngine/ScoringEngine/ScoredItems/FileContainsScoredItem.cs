@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
+using System.IO;
 
 namespace ScoringEngine
 {
     public class FileContainsScoredItem : FileScoredItem
     {
-        public string RegexCheck { get; protected set; }
+        public string RegexPattern { get; protected set; }
+        public bool ShouldMatch { get; protected set; }
 
         public override bool CheckScored()
         {
-            throw new NotImplementedException();
+            return new Regex(RegexPattern).IsMatch(File.ReadAllText(FilePath)) == ShouldMatch;
         }
     }
 }

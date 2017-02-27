@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace ScoringEngine
 {
@@ -13,7 +14,7 @@ namespace ScoringEngine
 
         public override bool CheckScored()
         {
-            throw new NotImplementedException();
+            return File.Exists(FilePath) == ShouldExist;
         }
     }
 }
