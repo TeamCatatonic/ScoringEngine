@@ -43,5 +43,33 @@ namespace ScoringEngine
             string output = $"<html><body><h1>Score: {totalScore}/{maxScore}</h1><h2>Vulnerabilities: {scoredSuccessful.Count}/{items.Count}</h2><p>{String.Join(Environment.NewLine, scoredSuccessful)}</p><p style='color: red;'>{String.Join(Environment.NewLine, scoredPenalties)}</p></body></html>";
             File.WriteAllText(filename, output);
         }
+
+        public enum OS
+        {
+            Windows,
+            Unix,
+            MacOS,
+            Other
+        }
+
+        public static OS GetOperatingSystem()
+        {
+            OperatingSystem os = Environment.OSVersion;
+            PlatformID pid = os.Platform;
+            switch (pid)
+            {
+                case PlatformID.Win32NT:
+                case PlatformID.Win32S:
+                case PlatformID.Win32Windows:
+                case PlatformID.WinCE:
+                    return OS.Windows;
+                case PlatformID.Unix:
+                    return OS.Unix;
+                case PlatformID.MacOSX:
+                    return OS.MacOS;
+                default:
+                    return OS.Other;
+            }
+        }
     }
 }
