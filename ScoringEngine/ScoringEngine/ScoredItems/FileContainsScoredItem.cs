@@ -21,7 +21,7 @@ namespace ScoringEngine
 
         public override bool CheckScored()
         {
-            return new Regex(RegexPattern).IsMatch(File.ReadAllText(FilePath)) == ShouldMatch;
+            return File.Exists(FilePath) && new Regex(RegexPattern).IsMatch(File.ReadAllText(FilePath)) == ShouldMatch;
         }
     }
 }
