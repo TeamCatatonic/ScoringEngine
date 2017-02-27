@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Reflection;
 
 namespace ScoringEngine
 {
@@ -13,14 +14,11 @@ namespace ScoringEngine
     {
         public static List<ScoredItem> ParseFromFile(string filename)
         {
-            JObject obj = JObject.Parse(File.ReadAllText(filename));
+            JArray obj = JArray.Parse(File.ReadAllText(filename));
             List<ScoredItem> scoredItems = new List<ScoredItem>();
-            foreach (var item in obj.AsJEnumerable())
+            foreach (var item in obj)
             {
-                scoredItems.Add((ScoredItem)typeof(JsonConvert)
-                    .GetMethod("DeserializeObject", System.Reflection.BindingFlags.Static)
-                    .MakeGenericMethod(Type.GetType(item["type"].ToString() + "ScoredItem"))
-                    .Invoke(null, new[] { item }));
+                scoredItems.Add((ScoredItem)item.ToObject(Type.GetType(typeof(ScoredItem).Namespace + "." + item["type"].ToString() + "ScoredItem")));
             }
             return scoredItems;
         }
@@ -31,6 +29,7 @@ namespace ScoringEngine
             int maxScore = 0;
             List<string> scoredSuccessful = new List<string>();
             List<string> scoredPenalties = new List<string>();
+
             foreach (var item in items)
             {
                 if (item.CheckScored())

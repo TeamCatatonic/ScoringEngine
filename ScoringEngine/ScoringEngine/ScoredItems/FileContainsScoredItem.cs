@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+using System.IO;
 
 namespace ScoringEngine
 {
@@ -14,9 +16,12 @@ namespace ScoringEngine
         [JsonProperty("regexPattern")]
         public string RegexPattern { get; protected set; }
 
+        [JsonProperty("shouldMatch")]
+        public bool ShouldMatch { get; protected set; }
+
         public override bool CheckScored()
         {
-            throw new NotImplementedException();
+            return new Regex(RegexPattern).IsMatch(File.ReadAllText(FilePath)) == ShouldMatch;
         }
     }
 }

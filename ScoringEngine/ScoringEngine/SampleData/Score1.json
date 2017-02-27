@@ -5,7 +5,7 @@
     "type": "FileCheck",
     "isPenalty": false,
 
-    "filePath": "C:\\Windows\\System32\\drivers\\etc\\host",
+    "filePath": "C:\\Windows\\System32\\drivers\\etc\\hosts",
     "shouldExist": true
   },
   {
@@ -14,8 +14,8 @@
     "type": "FileContains",
     "isPenalty": false,
 
-    "filePath": "C:\\Windows\\System32\\drivers\\etc\\host",
-    "pattern": "localhost",
+    "filePath": "C:\\Windows\\System32\\drivers\\etc\\hosts",
+    "regexPattern": "localhost",
     "shouldMatch": true
   }
 ]

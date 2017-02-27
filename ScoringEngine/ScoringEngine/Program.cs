@@ -21,7 +21,7 @@ namespace ScoringEngine
             while (true)
             {
                 ScoredItemParser.ScoreToFile(args[1], items);
-                System.Threading.Thread.Sleep(10);
+                System.Threading.Thread.Sleep(10000);
             }
         }
     }
