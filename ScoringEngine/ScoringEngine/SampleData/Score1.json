@@ -1,6 +1,6 @@
 ﻿[
   {
-    "name": "Hosts file exists",
+    "description": "Hosts file exists",
     "points": 50,
     "type": "FileCheck",
     "isPenalty": false,
@@ -9,7 +9,7 @@
     "shouldExist": true
   },
   {
-    "name": "Hosts file contains 'localhost'",
+    "description": "Hosts file contains 'localhost'",
     "points": 50,
     "type": "FileContains",
     "isPenalty": false,

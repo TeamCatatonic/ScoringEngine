@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ScoringEngine
 {
@@ -27,21 +28,34 @@ namespace ScoringEngine
         {
             int totalScore = 0;
             int maxScore = 0;
-            List<string> scoredSuccessful = new List<string>();
-            List<string> scoredPenalties = new List<string>();
+            List<ScoredItem> scoredVulns = new List<ScoredItem>();
+            List<ScoredItem> scoredPenalties = new List<ScoredItem>();
 
             foreach (var item in items)
             {
                 if (item.CheckScored())
                 {
-                    if (item.IsPenalty) scoredPenalties.Add(item.Description);
-                    else scoredSuccessful.Add(item.Description);
+                    if (item.IsPenalty) scoredPenalties.Add(item);
+                    else scoredVulns.Add(item);
                     totalScore += item.Points;
                 }
                 maxScore += item.Points;
             }
-            string output = $"<html><body><h1>Score: {totalScore}/{maxScore}</h1><h2>Vulnerabilities: {scoredSuccessful.Count}/{items.Count}</h2><p>{String.Join(Environment.NewLine, scoredSuccessful)}</p><p style='color: red;'>{String.Join(Environment.NewLine, scoredPenalties)}</p></body></html>";
-            File.WriteAllText(filename, output);
+            string templated = File.ReadAllText("ScoringTemplate.html");
+            Dictionary<string, string> toReplace = new Dictionary<string, string>()
+            {
+                { "SCORE_STRING", $"{totalScore}/{maxScore}" },
+                { "VULN_STRING", $"{scoredVulns.Count}/{items.Where(x => !x.IsPenalty).Count()}" },
+                { "VULN_LIST", String.Join(Environment.NewLine, (from item in scoredVulns select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
+                { "PEN_STRING", $"{scoredPenalties.Count}/{items.Where(x => x.IsPenalty).Count()}" },
+                { "PEN_LIST", String.Join(Environment.NewLine, (from item in scoredPenalties select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
+            };
+            foreach (var item in toReplace)
+            {
+                Regex regex = new Regex("{{\\s+" + item.Key + "\\s+}}");
+                templated = regex.Replace(templated, item.Value);
+            }
+            File.WriteAllText(filename, templated);
         }
     }
 }
