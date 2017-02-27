@@ -19,14 +19,14 @@
     "shouldMatch": true
   },
   {
-    "description": "ScoringTemplate.html does not contain 'hack'",
+    "description": "Secret registry key is set",
     "points": 5,
-    "type": "FileContains",
+    "type": "Registry",
     "isPenalty": false,
 
-    "filePath": "ScoringTemplate.html",
-    "regexPattern": "hack",
-    "shouldMatch": false
+    "registryPath": "HKEY_CURRENT_USER\\",
+    "registryValue": "test",
+    "expectedValue": "hi"
   },
   {
     "description": "ScoringTemplate.html contains 'hack'",

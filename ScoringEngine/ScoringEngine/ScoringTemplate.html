@@ -20,7 +20,7 @@
     </style>
     <title>Scoring Report</title>
 </head>
-<body class="blue-grey darken-3">
+<body class="grey lighten-2">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <header>
@@ -36,17 +36,17 @@
     </header>
     <main id="mainBody">
         <div class="container">
-            <div class="card-panel orange-text">
+            <div class="grey lighten-3 card-panel orange-text">
                 <h5>Score: {{ SCORE_STRING }}</h5>
                 <h5>Last Updated: {{ TIME_STRING }}</h5>
             </div>
-            <div class="card-panel blue-text text-lighten-1">
+            <div class="grey lighten-3 card-panel blue-text text-lighten-1">
                 <h4>Vulnerabilities: {{ VULN_STRING }}</h4>
                 <ul class="collection">
                     {{ VULN_LIST }}
                 </ul>
             </div>
-            <div class="card-panel red-text text-lighten-1">
+            <div class="grey lighten-3 card-panel red-text text-lighten-1">
                 <h4>Penalties: {{ PEN_STRING }}</h4>
                 <ul class="collection">
                     {{ PEN_LIST }}
