@@ -1,7 +1,7 @@
 ﻿[
   {
-    "name": "Hosts file exists",
-    "points": 50,
+    "description": "Hosts file exists",
+    "points": 5,
     "type": "FileCheck",
     "isPenalty": false,
 
@@ -9,13 +9,33 @@
     "shouldExist": true
   },
   {
-    "name": "Hosts file contains 'localhost'",
-    "points": 50,
+    "description": "Hosts file contains 'localhost'",
+    "points": 5,
     "type": "FileContains",
     "isPenalty": false,
 
     "filePath": "C:\\Windows\\System32\\drivers\\etc\\hosts",
     "regexPattern": "localhost",
+    "shouldMatch": true
+  },
+  {
+    "description": "Secret registry key is set",
+    "points": 5,
+    "type": "Registry",
+    "isPenalty": false,
+
+    "registryPath": "HKEY_CURRENT_USER\\",
+    "registryValue": "test",
+    "expectedValue": "hi"
+  },
+  {
+    "description": "ScoringTemplate.html contains 'hack'",
+    "points": 5,
+    "type": "FileContains",
+    "isPenalty": true,
+
+    "filePath": "ScoringTemplate.html",
+    "regexPattern": "hack",
     "shouldMatch": true
   }
 ]

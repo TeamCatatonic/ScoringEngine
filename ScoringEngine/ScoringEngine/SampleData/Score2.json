@@ -1,0 +1,31 @@
+﻿[
+  {
+    "description": "Passwd file exists",
+    "points": 5,
+    "type": "FileCheck",
+    "isPenalty": false,
+
+    "filePath": "/etc/passwd",
+    "shouldExist": true
+  },
+  {
+    "description": "Passwd file contains 'root'",
+    "points": 5,
+    "type": "FileContains",
+    "isPenalty": false,
+
+    "filePath": "/etc/passwd",
+    "regexPattern": "root:x:0",
+    "shouldMatch": true
+  },
+  {
+    "description": "ScoringTemplate.html contains 'hack'",
+    "points": 5,
+    "type": "FileContains",
+    "isPenalty": true,
+
+    "filePath": "ScoringTemplate.html",
+    "regexPattern": "hack",
+    "shouldMatch": true
+  }
+]

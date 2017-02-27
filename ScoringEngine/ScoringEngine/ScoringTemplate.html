@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" media="screen,projection">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="15">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+    <title>Scoring Report</title>
+</head>
+<body class="grey lighten-2">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <header>
+        <div class="fixed-nav">
+            <nav class="top-nav blue">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a class="brand-logo">Scoring Report</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main id="mainBody">
+        <div class="container">
+            <div class="card-panel orange-text">
+                <h5>Score: {{ SCORE_STRING }}</h5>
+                <h5>Last Updated: {{ TIME_STRING }}</h5>
+            </div>
+            <div class="card-panel blue-text text-lighten-1">
+                <h4>Vulnerabilities: {{ VULN_STRING }}</h4>
+                <ul class="collection">
+                    {{ VULN_LIST }}
+                </ul>
+            </div>
+            <div class="card-panel red-text text-lighten-1">
+                <h4>Penalties: {{ PEN_STRING }}</h4>
+                <ul class="collection">
+                    {{ PEN_LIST }}
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
