@@ -3,24 +3,36 @@ var config = require("../config");
 
 var scorebot = {};
 
-// Just test data for now
-var scores = [{
-    name: "Team1",
-    score: 0
-}, {
-    name: "Team2",
-    score: 0
-}];
+var scores = [];
 
 scorebot.start = function() {
     console.log("Started!");
+    config.teams.forEach(function(team) {
+        scores.push({
+            name: team.name,
+            ip: team.ip,
+            score: 0,
+            consecutiveDown: 0,
+            history: []
+        });
+    });
     scorebot.check();
 };
 
 scorebot.check = function() {
-    console.log("Eventually this will do stuff... maybe");
     scores.forEach(function(item) {
-        item.score++;
+        item.history.push(item.score);
+        if (/* TODO: Eventually should check the score */ util.randomRange(0, 2) == 0) {
+            item.score += config.scoreUpPoints;
+            item.consecutiveDown = 0;
+        } else {
+            item.consecutiveDown++;
+            if (item.consecutiveDown > config.scoreSLACounter) {
+                item.score += config.scoreSLAPoints;
+            } else {
+                item.score += config.scoreDownPoints;
+            }
+        }
     });
     setTimeout(scorebot.check, util.randomRange(config.scoreIntervalMin, config.scoreIntervalMax));
 }
