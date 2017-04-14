@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(href="http://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css", media="screen,projection")
+    link(rel="stylesheet", href="/style.css")
+  body
+    script(type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js")
+    header
+      .fixed-nav
+        nav.top-nav.blue
+          .container
+            .nav-wrapper
+              a.brand-logo Stuff
+              ul.right.hide-on-med-and-down#nav-mobile
+                li
+                  a.waves-effect Clicky
+    main.container
+      block content
+        p Nothing here
+    footer.page-footer.blue.darken-2
+      .footer-copyright
+        .container
+          p.white-text Hi

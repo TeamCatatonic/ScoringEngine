@@ -1,2 +1,6 @@
-h1= title
-p Welcome to #{title}
+extends base
+
+block content
+  ul
+    each val in scores
+      li #{val.name}: #{val.score}
