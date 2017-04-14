@@ -15,8 +15,8 @@ namespace ScoringEngine
     {
         [JsonProperty("username")]
         public string Username { get; protected set; }
-        [JsonProperty("type")]
-        public UserScoredItemType Type { get; protected set; }
+        [JsonProperty("check")]
+        public UserScoredItemType Check { get; protected set; }
         [JsonProperty("shouldBeTrue")]
         public bool ShouldBeTrue { get; protected set; } = true;
         [JsonProperty("groupName")]
@@ -43,7 +43,7 @@ namespace ScoringEngine
             {
                 if (envVar["Name"].ToString() == Username)
                 {
-                    switch (Type)
+                    switch (Check)
                     {
                         case UserScoredItemType.ShouldExist:
                             return ShouldBeTrue;
@@ -64,7 +64,7 @@ namespace ScoringEngine
                 Console.WriteLine("Username : {0}", envVar["Name"]);
             }
 
-            if (Type == UserScoredItemType.ShouldExist) return !ShouldBeTrue;
+            if (Check == UserScoredItemType.ShouldExist) return !ShouldBeTrue;
 
             return false;
         }
@@ -107,7 +107,7 @@ namespace ScoringEngine
 
         private bool checkedScoredUnix()
         {
-            switch (Type)
+            switch (Check)
             {
                 case UserScoredItemType.ShouldExist:
                     return ShouldBeTrue == (File.ReadAllLines("/etc/passwd").Where(x => x.StartsWith(Username + ":")).Count() == 1);
