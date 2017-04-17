@@ -23,7 +23,7 @@ namespace ScoringEngine
 
         public override bool CheckScored()
         {
-            return Registry.GetValue(RegistryKey, RegistryValue, null).GetHashCode() == ExpectedValue.GetHashCode();
+            return Registry.GetValue(RegistryKey, RegistryValue, null)?.GetHashCode() == ExpectedValue?.GetHashCode();
         }
     }
 }

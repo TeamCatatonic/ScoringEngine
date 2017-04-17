@@ -54,9 +54,9 @@ namespace ScoringEngine
                 { "TIME_STRING", DateTime.Now.ToString() },
                 { "SCORE_STRING", $"{totalScore}/{maxScore}" },
                 { "VULN_STRING", $"{scoredVulns.Count}/{items.Where(x => !x.IsPenalty).Count()} ({scoredVulns.Sum(x => x.Points)} pts)" },
-                { "VULN_LIST", String.Join(Environment.NewLine, (from item in scoredVulns select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
+                { "VULN_LIST", String.Join(Environment.NewLine, scoredVulns.Select(item=> $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>")) },
                 { "PEN_STRING", $"{scoredPenalties.Count} ({scoredPenalties.Sum(x => x.Points)} pts)" },
-                { "PEN_LIST", String.Join(Environment.NewLine, (from item in scoredPenalties select $"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
+                { "PEN_LIST", String.Join(Environment.NewLine, scoredPenalties.Select(item=>$"<li class='collection-item'>{item.Description} - {item.Points} pts</li>"))},
             };
             foreach (var item in toReplace)
             {
