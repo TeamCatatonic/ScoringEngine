@@ -17,6 +17,8 @@ namespace ScoringEngine
                 return;
             }
 
+            System.Diagnostics.Process.Start(args[1]);
+
             List<ScoredItem> items = ScoredItemParser.ParseFromFile(args[0]);
             while (true)
             {
