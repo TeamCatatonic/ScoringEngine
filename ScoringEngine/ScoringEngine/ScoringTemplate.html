@@ -10,17 +10,17 @@
             flex-direction: column;
             background-color: #eeeeee;
         }
-        
+
         main {
             flex: 1 0 auto;
         }
-        
+
         .header {
             font-weight: 300;
         }
     </style>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"
-        media="screen,projection" />
+          media="screen,projection" />
 
     <title>Competition Hub</title>
 
@@ -34,15 +34,15 @@
 
     <header>
         <nav>
-            <div class="nav-wrapper blue">
+            <div class="nav-wrapper {{ COLOR_STRING }}">
                 <a style="padding-left:16px" href="index.html" class="brand-logo waves-effect" id="top">Competition Hub</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li class="waves-effect active"><a href="index.html">Scoring Report</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li class="blue"><a class="waves-effect white-text" href=""><i class="material-icons left center-vert">menu</i>Competition Hub</a></li>
-                    <li class="blue lighten-3"><a class="waves-effect" href="index.html"><i class="material-icons left center-vert">assignment</i>Scoring Report</a></li>
+                    <li class="{{ COLOR_STRING }}"><a class="waves-effect white-text" href=""><i class="material-icons left center-vert">menu</i>Competition Hub</a></li>
+                    <li class="{{ COLOR_STRING }} lighten-3"><a class="waves-effect" href="index.html"><i class="material-icons left center-vert">assignment</i>Scoring Report</a></li>
                 </ul>
             </div>
         </nav>
@@ -50,30 +50,22 @@
 
 
     <main class="container">
-        <h1 class="blue-text header">Scoring Report</h1>
+        <h1 class="{{ COLOR_STRING }}-text header">Scoring Report</h1>
         <div class="row">
             <div class="col s12">
                 <div class="card-panel blue darken-1 white-text">
                     <h3 class="header">Score</h3>
                     <h4>{{ SCORE_STRING }}</h4>
-                    <h5>{{ RANK_STRING }} <span style="font-size: large">{{ TEAM_COUNT_STRING }}</span></h5>
+                    <h4>{{ RANK_STRING }} <span style="font-size: large">{{ TEAM_COUNT_STRING }}</span></h4>
                     <p style="font-size: large">Last updated {{ TIME_STRING }}</p>
                 </div>
             </div>
-            <div class="col s12">
-                <div class="card-panel red lighten-1 white-text">
-                    <h3 class="header">Penalties</h3>
-                    <h5>{{ PEN_STRING }}</h5>
-                    <ul class="collection red">
-                        {{ PEN_LIST }}
-                    </ul>
-                </div>
-            </div>
-            <div class="col s12">
-                <div class="card-panel blue-grey white-text">
-                    <h3 class="header">Vulnerabilities</h3>
+            {{ PEN_SECTION }}
+            <div class='col s12'>
+                <div class='card-panel blue-grey white-text'>
+                    <h3 class='header'>Vulnerabilities</h3>
                     <h5>{{ VULN_STRING }}</h5>
-                    <ul class="collection blue-grey">
+                    <ul class='collection blue-grey'>
                         {{ VULN_LIST }}
                     </ul>
                 </div>
